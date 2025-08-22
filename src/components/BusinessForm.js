@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import API from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import useCurrentUser from '../hooks/useCurrentUser';
 
 export default function BusinessForm() {
   const [form, setForm] = useState({
@@ -10,6 +12,7 @@ export default function BusinessForm() {
     business_age: '',
   });
   const navigate = useNavigate();
+  const user = useCurrentUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,12 +27,15 @@ export default function BusinessForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input placeholder="Business Name" onChange={(e) => setForm({...form, business_name: e.target.value})} />
-      <input placeholder="Location" onChange={(e) => setForm({...form, location: e.target.value})} />
-      <input placeholder="Income" onChange={(e) => setForm({...form, income: e.target.value})} />
-      <input placeholder="Business Age" onChange={(e) => setForm({...form, business_age: e.target.value})} />
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      {user && <div style={{textAlign: 'center', marginBottom: 12, fontWeight: 600}}>Welcome, {user.username}!</div>}
+      <form onSubmit={handleSubmit}>
+        <input placeholder="Business Name" onChange={(e) => setForm({...form, business_name: e.target.value})} />
+        <input placeholder="Location" onChange={(e) => setForm({...form, location: e.target.value})} />
+        <input placeholder="Income" onChange={(e) => setForm({...form, income: e.target.value})} />
+        <input placeholder="Business Age" onChange={(e) => setForm({...form, business_age: e.target.value})} />
+        <button type="submit">Submit</button>
+      </form>
+    </>
   );
 }
