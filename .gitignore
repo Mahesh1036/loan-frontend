@@ -1,17 +1,5 @@
-# Python
-venv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.sqlite3
+build/
 .env
-
-# Django
-db.sqlite3
-staticfiles/
-media/
-*.log
 
 # Node.js / React
 node_modules/
@@ -22,21 +10,6 @@ build/
 .DS_Store
 .idea/
 .vscode/
-
-# Python
-venv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.sqlite3
-.env
-
-# Django
-db.sqlite3
-staticfiles/
-media/
-*.log
 
 # Node.js / React
 node_modules/
